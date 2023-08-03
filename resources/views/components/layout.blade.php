@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <nav class="flex justify-between items-center mb-4">
+  <nav class="flex justify-between items-center h-16 bg-gray-100 ">
     <h1>BLOG</h1>
     <ul class="flex space-x-6 mr-6 text-lg">
       @auth
