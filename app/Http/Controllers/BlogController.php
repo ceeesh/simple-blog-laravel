@@ -10,7 +10,7 @@ class BlogController extends Controller
     public function index()
     {
         return view('blogs.index', [
-            'blogs' => auth()->user()->blogs()->latest()->get()
+            'blogs' => auth()->user()->blogs()->latest()->paginate(3)
         ]);
     }
 
@@ -23,8 +23,8 @@ class BlogController extends Controller
     {
 
         $formFields = $request->validate([
-            'title' => 'required',
-            'description' => 'required'
+            'title' => ['required', 'max:20'],
+            'description' => ['required', 'max:350']
         ]);
 
         $formFields['user_id'] = auth()->id();
@@ -33,7 +33,7 @@ class BlogController extends Controller
 
         // Session::flash('message', 'Listing Created!');
 
-        return redirect('/home');
+        return redirect('/home')->with('message', 'Blog created successfully');
     }
 
     public function edit(Blog $blog)
@@ -54,13 +54,13 @@ class BlogController extends Controller
         }
 
         $formFields = $request->validate([
-            'title' => 'required',
-            'description' => 'required'
+            'title' => ['required', 'max:20'],
+            'description' => ['required', 'max:350']
         ]);
 
         $blog->update($formFields);
 
-        return redirect('/home');
+        return redirect('/home')->with('message', 'Blog updated successfully');
     }
 
     public function show(Blog $blog)
@@ -71,5 +71,16 @@ class BlogController extends Controller
         }
 
         return view('blogs.show', ['blog' => $blog]);
+    }
+
+    public function destroy(Blog $blog)
+    {
+        // Make sure logged in user is owner
+        if ($blog->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
+        $blog->delete();
+        return redirect('/home')->with('message', 'Blog deleted successfully');
     }
 }
