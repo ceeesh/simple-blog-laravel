@@ -50,6 +50,9 @@ Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->middleware('a
 // Update Blog
 Route::put('/blogs/{blog}', [BlogController::class, 'update'])->middleware('auth');
 
+// Delete Blog
+Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->middleware('auth');
+
 // Show Single Blog
 Route::get('/blogs/{blog}', [BlogController::class, 'show']);
 
