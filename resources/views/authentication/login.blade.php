@@ -4,6 +4,7 @@
     </div>
     <form method="POST" action="/authenticate" class="w-1/4 mx-auto mt-64 z-50">
       @csrf
+      <h1 class="text-center text-white text-xl mb-5">LOGIN</h1>
       <div class="text-black flex ">
         <div class="bg-white bg-gray-700 bg-opacity-80 p-4"><img src="{{asset("./images/user.png")}}" class="w-5" />
         </div>
