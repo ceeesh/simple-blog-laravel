@@ -12,7 +12,7 @@
 
 <body>
   <nav class="flex justify-between items-center h-16 bg-gray-100 bg-opacity-20">
-    <h1 class="font-medium text-2xl ml-4">BLOG</h1>
+    <h1 class="font-medium text-2xl ml-4 hover:text-blue-500 transition-all duration-300 delay-75"><a href="/home">BLOG</a></h1>
     <ul class="flex space-x-6 mr-6 text-lg">
       @auth
       <li>
