@@ -89,6 +89,11 @@ class UserController extends Controller
         if ($request->hasFile('picture')) {
             $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
         }
+        // echo($request->file('picture'));
+
+        // if ($request->hasFile('logo')) {
+        //     $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        // }
 
         $user->update($formFields);
 
