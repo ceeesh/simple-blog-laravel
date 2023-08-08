@@ -16,7 +16,7 @@
     <ul class="flex space-x-6 mr-6 text-lg">
       @auth
       <li>
-       <span class="font-bold capitalize"> {{auth()->user()->name}}</span>
+       <span class="font-bold capitalize hover:text-blue-500 transition-all duration-300 delay-75"> <a href="/profile/{{auth()->user()->id}}" >{{auth()->user()->name}}</a></span>
       </li>
       <li>
         <form class="inline" method="POST" action="/logout">
@@ -28,10 +28,10 @@
       </li>
       @else
       <li>
-        <a href="/register" ></i> Register</a>
+        <a href="/register" class="hover:text-blue-500 transition-all duration-300 delay-75">Register</a>
       </li>
       <li>
-        <a href="/" ></i>
+        <a href="/" class="hover:text-blue-500 transition-all duration-300 delay-75">
           Login</a>
       </li>
       @endauth

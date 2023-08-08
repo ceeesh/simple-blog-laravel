@@ -55,4 +55,43 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'You have been logged out!');
     }
+
+    public function show(User $user){
+        if($user->id != auth()->id()){
+            return redirect('/home');
+        }
+
+        return view('profile.show', ['user' => $user]);
+    }
+
+    public function edit(User $user){
+        if($user->id != auth()->id()){
+            return redirect('/home');
+        }
+
+        return view('profile.edit', ['user' => $user]);
+    }
+
+    public function update(Request $request, User $user)
+    {
+        // dd($request->file('picture'));
+
+        // Make sure logged in user is owner
+        if($user->id != auth()->id()){
+            return redirect('/home');
+        }
+
+        $formFields = $request->validate([
+            'name' => ['required', 'min:3'],
+            'email' => ['required', 'email'],
+        ]);
+
+        if ($request->hasFile('picture')) {
+            $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
+        }
+
+        $user->update($formFields);
+
+        return redirect('/home')->with('message', 'User updated successfully');
+    }
 }
