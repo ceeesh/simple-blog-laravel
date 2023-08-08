@@ -32,7 +32,7 @@
       </div>
 
       <div
-        class="bg-white font-medium text-base mt-5 mx-8 p-2 text-center shadow-2xl shadow-black bg-gray-200 bg-opacity-50 text-white  hover:bg-opacity-10">
+        class="bg-white font-medium text-base mt-5 mx-8 p-2 text-center shadow-2xl shadow-black bg-gray-200 bg-opacity-50 text-white hover:bg-opacity-10 transition-all duration-300 delay-75">
         <button type="submit" class="w-full">LOGIN</button>
       </div>
 

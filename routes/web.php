@@ -31,7 +31,14 @@ Route::post('/authenticate', [UserController::class, 'authenticate']);
 // Logout User
 Route::post('/logout', [UserController::class, 'logout']);
 
+// Show Edit Form User
+Route::get('/profile/{user}/edit', [UserController::class, 'edit'])->middleware('auth');
 
+// Show Edit Form User
+Route::put('/profile/{user}', [UserController::class, 'update'])->middleware('auth');
+
+// Show Profile User
+Route::get('/profile/{user}', [UserController::class, 'show'])->middleware('auth');
 
 
 
